@@ -2,11 +2,13 @@ import { Routes, Route, BrowserRouter } from "react-router-dom"
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Home from "./Home";
+import { Header } from "./components/nav/Header";
 
 
 const App = () => {
   return (
     <>
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
