@@ -4,18 +4,20 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 
 const items = [
     {
-        label: 'Navigation One',
-        key: 'mail',
-        icon: <MailOutlined />,
+        key: 'Home',
+        label: (
+            <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
+                Home
+            </a>
+        ),
     },
+    // {
+    //     label: 'Navigation One',
+    //     key: 'mail',
+    //     icon: <MailOutlined />,
+    // },
     {
-        label: 'Navigation Two',
-        key: 'app',
-        icon: <AppstoreOutlined />,
-        disabled: true,
-    },
-    {
-        label: 'Navigation Three - Submenu',
+        label: 'Register',
         key: 'SubMenu',
         icon: <SettingOutlined />,
         children: [
@@ -36,14 +38,6 @@ const items = [
                 ],
             },
         ],
-    },
-    {
-        key: 'alipay',
-        label: (
-            <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-                Navigation Four - Link
-            </a>
-        ),
     },
 ];
 
