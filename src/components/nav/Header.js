@@ -43,7 +43,7 @@ const items = [
 
 const Header = () => {
     const [state, setState] = useState('')
-    const [current, setCurrent] = useState('mail');
+    const [current, setCurrent] = useState('home');
     const onClick = e => {
         console.log('click ', e);
         setCurrent(e.key);
