@@ -1,55 +1,34 @@
 import React, { useState } from "react";
 import { Menu } from 'antd'
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, MailOutlined, SettingOutlined, UserOutlined, UserAddOutlined } from '@ant-design/icons';
+import { Link } from "react-router-dom";
 
-const items = [
-    {
-        key: 'Home',
-        label: (
-            <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-                Home
-            </a>
-        ),
-    },
-    // {
-    //     label: 'Navigation One',
-    //     key: 'mail',
-    //     icon: <MailOutlined />,
-    // },
-    {
-        label: 'Register',
-        key: 'SubMenu',
-        icon: <SettingOutlined />,
-        children: [
-            {
-                type: 'group',
-                label: 'Item 1',
-                children: [
-                    { label: 'Option 1', key: 'setting:1' },
-                    { label: 'Option 2', key: 'setting:2' },
-                ],
-            },
-            {
-                type: 'group',
-                label: 'Item 2',
-                children: [
-                    { label: 'Option 3', key: 'setting:3' },
-                    { label: 'Option 4', key: 'setting:4' },
-                ],
-            },
-        ],
-    },
-];
+const { SubMenu, Item } = Menu;
 
 const Header = () => {
-    const [state, setState] = useState('')
     const [current, setCurrent] = useState('home');
     const onClick = e => {
-        console.log('click ', e);
+        // console.log('click ', e);
         setCurrent(e.key);
     };
-    return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
 
+    return (
+        <Menu selectedKeys={[current]} mode="horizontal">
+            <Item key="home" icon={<AppstoreOutlined />}>
+                <Link to='/'>Home</Link>
+            </Item>
+            <SubMenu icon={<SettingOutlined />} title='Username'>
+                <Menu.Item key="setting:1">Option 1</Menu.Item>
+                <Menu.Item key="setting:2">Option 2</Menu.Item>
+            </SubMenu>
+            <Item key="login" icon={<UserOutlined />} style={{marginLeft:'auto'}}>
+                <Link to='/login'>Login</Link>
+            </Item>
+            <Item key="register" icon={<UserAddOutlined />}>
+                <Link to='/register'>Register</Link>
+            </Item>
+        </Menu>
+    )
 }
 
 export default Header
