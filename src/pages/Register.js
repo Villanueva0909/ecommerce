@@ -1,9 +1,12 @@
 import React, { useState } from "react"
+import { Button } from "antd"
+import { toast, ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
 
 const Register = () => {
     const [email, setEmail] = useState()
     const handleSubmit = () => {
-        //
+        e.preventDefault()
     }
     const registerForm = () => (
         <form onSubmit={handleSubmit}>
@@ -13,7 +16,7 @@ const Register = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 autoFocus />
 
-                <button type="submit" className="btn btn-raised">Submit</button>
+            <Button type="primary">Primary Button</Button>
         </form>
     )
 
@@ -22,7 +25,7 @@ const Register = () => {
             <div className="row">
                 <div className="col-md-6 offset-md-3">
                     <h4>Register</h4>
-                    {registerForm()}
+                    {registerForm()} / {email}
                 </div>
             </div>
         </div>
