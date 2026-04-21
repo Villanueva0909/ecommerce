@@ -5,8 +5,18 @@ import "react-toastify/dist/ReactToastify.css"
 
 const Register = () => {
     const [email, setEmail] = useState()
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        const config = {
+            url: "http://localhost:3000/register/complete",
+            handleCodeInApp: true
+        }
+        await auth.sendSignInLinkToEmail(email, config)
+        toast.success(
+            `Email is sent to ${email}. Click the link to complete registration.`
+        )
+        // save user email in local storage
+        window.localStorage.setItem('emailForRegistration', email)
     }
     const registerForm = () => (
         <form onSubmit={handleSubmit}>
