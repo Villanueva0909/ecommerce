@@ -10,7 +10,7 @@ const RegisterComplete = ({ history }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    useState(() => { }, [])
+    useState(() => { }, [password])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -20,7 +20,7 @@ const RegisterComplete = ({ history }) => {
             handleCodeInApp: true
         }
     }
-    const registerForm = () => (
+    const completeRegisterForm = () => (
         <form onSubmit={handleSubmit}>
             <input type="email"
                 className="form-control"
@@ -36,9 +36,8 @@ const RegisterComplete = ({ history }) => {
         <div className="container p-5">
             <div className="row">
                 <div className="col-md-6 offset-md-3">
-                    <h4>Register</h4>
-                    <ToastContainer />
-                    {registerForm()}
+                    <h4>Register Complete</h4>
+                    {completeRegisterForm()}
                 </div>
             </div>
         </div>
