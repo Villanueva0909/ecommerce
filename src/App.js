@@ -1,8 +1,8 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom"
 import { ToastContainer } from "react-toastify"
 import Home from "./auth/Home"
-import Login from './pages/Login'
-import Register from './pages/Register'
+import Login from './auth/Login'
+import Register from './auth/Register'
 import Header from './components/nav/Header';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
