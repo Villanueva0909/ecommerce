@@ -10,25 +10,26 @@ const RegisterComplete = ({ history }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    useState(() => { }, [password])
+    useState(() => { }, [console.log(window.localStorage.getItem("emailForRegistration"))])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // console.log(process.env.REACT_APP_REGISTER_REDIRECT_URL)
-        const config = {
-            url: process.env.REACT_APP_REGISTER_REDIRECT_URL,
-            handleCodeInApp: true
-        }
+
     }
     const completeRegisterForm = () => (
         <form onSubmit={handleSubmit}>
             <input type="email"
                 className="form-control"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                autoFocus />
+                disabled />
 
-            <Button type="primary" htmlType="submit">Primary Button</Button>
+                <input type="passowrd"
+                className="form-control"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled />
+
+            <Button type="primary" htmlType="submit">Complete Registration</Button>
         </form>
     )
 
@@ -45,3 +46,4 @@ const RegisterComplete = ({ history }) => {
 }
 
 export default RegisterComplete
+
