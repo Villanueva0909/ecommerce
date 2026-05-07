@@ -3,8 +3,7 @@ import { auth } from '../firebase'
 import { Button } from "antd"
 import { toast, ToastContainer } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
-
-import { sendSignInLinkToEmail } from "firebase/auth"
+import { signInWithEmailLink } from "firebase/auth"
 
 const RegisterComplete = ({ history }) => {
     const [email, setEmail] = useState("")
@@ -25,6 +24,7 @@ const RegisterComplete = ({ history }) => {
 
         } catch (error) {
             console.log(error)
+            toast.error(error.message)
 
         }
 
