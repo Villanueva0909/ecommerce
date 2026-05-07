@@ -12,15 +12,24 @@ const RegisterComplete = ({ history }) => {
     useState(() => {
         console.log(window.localStorage.getItem("emailForRegistration"))
         console.log(window.location.href)
-    
+
     }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        //validation
+        if (!email || !password) {
+            toast.error("Email and password is required")
+        return
+        }
+        if (password.length < 6) {
+            toast.error("Password must be at least 6 characters long")
+        return
+        }
 
         try {
             const result = await signInWithEmailLink(auth, email, window.location.href)
-            if(result.user.emailVerified){
+            if (result.user.emailVerified) {
                 //remove user email from local storage
                 window.localStorage.removeItem('emailForRegistration')
                 //get user id token
@@ -31,7 +40,7 @@ const RegisterComplete = ({ history }) => {
                 console.log('user', user, "IdTokenResult", idTokenResult)
                 //redirect
                 history.push('/')
-                
+
             }
 
         } catch (error) {
