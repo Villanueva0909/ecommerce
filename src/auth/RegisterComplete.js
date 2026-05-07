@@ -18,16 +18,19 @@ const RegisterComplete = ({ history }) => {
     }
     const completeRegisterForm = () => (
         <form onSubmit={handleSubmit}>
-            <input type="email"
+            <input
+                type="email"
                 className="form-control"
                 value={email}
                 disabled />
-
-                <input type="passowrd"
+            <br />
+            <input
+                type="password"
                 className="form-control"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                disabled />
+                placeholder="Password"
+                autoFocus />
 
             <Button type="primary" htmlType="submit">Complete Registration</Button>
         </form>
