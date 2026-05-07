@@ -12,15 +12,27 @@ const RegisterComplete = ({ history }) => {
     useState(() => {
         console.log(window.localStorage.getItem("emailForRegistration"))
         console.log(window.location.href)
-        console.log('')
+    
     }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         try {
-            const result = await auth.signInWithEmailLink(email, window.location.href)
-            console.log("RESULT", result)
+            const result = await signInWithEmailLink(auth, email, window.location.href)
+            if(result.user.emailVerified){
+                //remove user email from local storage
+                window.localStorage.removeItem('emailForRegistration')
+                //get user id token
+                let user = auth.currentUser
+                await user.updatePassword(password)
+                const idTokenResult = await user.getIdTokenResult
+                //reduex store
+                console.log('user', user, "IdTokenResult", idTokenResult)
+                //redirect
+                history.push('/')
+                
+            }
 
         } catch (error) {
             console.log(error)
