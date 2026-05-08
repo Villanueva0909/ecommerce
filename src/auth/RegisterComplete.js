@@ -18,14 +18,16 @@ const RegisterComplete = ({ history }) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         //validation
-        if (!email || !password) {
-            toast.error("Email and password is required")
-        return
-        }
         if (password.length < 6) {
             toast.error("Password must be at least 6 characters long")
-        return
+            return
         }
+
+        if (!email || !password) {
+            toast.error("Email and password is required")
+            return
+        }
+
 
         try {
             const result = await signInWithEmailLink(auth, email, window.location.href)

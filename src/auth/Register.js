@@ -45,7 +45,7 @@ const Register = () => {
                     <ToastContainer />
                     {registerForm()}
                 </div>
-            </div>
+            </div>  
         </div>
     )
 }
