@@ -12,6 +12,10 @@ const Header = () => {
         setCurrent(e.key);
     };
 
+    const logout = () => {
+        console.log('the account has been logout');
+    }
+
     return (
         <Menu selectedKeys={[current]} mode="horizontal">
             <Item key="home" icon={<AppstoreOutlined />}>
@@ -20,6 +24,7 @@ const Header = () => {
             <SubMenu icon={<SettingOutlined />} title='Username'>
                 <Menu.Item key="setting:1">Option 1</Menu.Item>
                 <Menu.Item key="setting:2">Option 2</Menu.Item>
+                <Menu icon={<UserOutlined />} onClick={logout}>Logout</Menu>
             </SubMenu>
             <Item key="login" icon={<UserOutlined />} style={{marginLeft:'auto'}}>
                 <Link to='/login'>Login</Link>
